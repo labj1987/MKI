@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>io.github.labj1987.MKI</id>
+  <name>Mainline Kernel Installer</name>
+  <summary>Install Ubuntu mainline kernels with a verified initramfs</summary>
+  <metadata_license>MIT</metadata_license>
+  <project_license>MIT</project_license>
+  <description>
+    <p>
+      Browse, download, and install Ubuntu mainline kernels from
+      kernel.ubuntu.com. The kernel version is read from package metadata
+      rather than parsed from filenames, the initramfs is generated and
+      verified to exist before an install reports success, and every
+      installed kernel is health-checked for a missing initrd so an
+      unbootable kernel is visible before a reboot instead of after.
+    </p>
+  </description>
+  <launchable type="desktop-id">mainline-kernel-installer.desktop</launchable>
+  <provides>
+    <binary>mainline-kernel-installer</binary>
+  </provides>
+  <categories>
+    <category>System</category>
+  </categories>
+  <releases>
+    <release version="1.0.0" date="2026-07-16"/>
+  </releases>
+</component>
