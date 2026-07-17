@@ -34,10 +34,8 @@ on boot. This app is built around not letting that happen:
 
 Download the AppImage from the Releases page:
 
-```
-chmod +x mainline-kernel-installer-*-x86_64.AppImage
-./mainline-kernel-installer-*-x86_64.AppImage
-```
+    chmod +x mainline-kernel-installer-*-x86_64.AppImage
+    ./mainline-kernel-installer-*-x86_64.AppImage
 
 First launch asks for authentication once to install the privileged
 helper script and polkit policy to system paths.
@@ -52,6 +50,24 @@ helper script and polkit policy to system paths.
 4. Reboot when ready. The new kernel only reports success after its
    initramfs is verified on disk.
 
+## Screenshots
+
+**System** — every installed kernel with initrd/modules health checks, a running badge, and disk space
+
+![System tab](docs/screenshots/system-tab.png)
+
+**Browse** — mainline versions badged against the running kernel
+
+![Browse tab](docs/screenshots/browse-tab.png)
+
+**Install** — staged packages, checksum status, and the install action
+
+![Install tab](docs/screenshots/install-tab.png)
+
+**Log** — full run log, from version fetch through initramfs verification
+
+![Log tab](docs/screenshots/log-tab.png)
+
 ## Notes
 
 Developed and tested on Ubuntu 26.04, GNOME on Wayland. Mainline kernels
@@ -61,16 +77,12 @@ listed.
 
 ## Building from source
 
-```
-apt install -y cargo rustc libgtk-4-dev libadwaita-1-dev pkg-config libssl-dev
-cargo build --release
-```
+    apt install -y cargo rustc libgtk-4-dev libadwaita-1-dev pkg-config libssl-dev
+    cargo build --release
 
 Or build the AppImage the same way CI does:
 
-```
-bash build-appimage.sh
-```
+    bash build-appimage.sh
 
 ## License
 
