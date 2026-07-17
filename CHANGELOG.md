@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.0.3 — Fix missing .zsync file
+
+- The build runner never had zsync installed, so appimagetool silently
+  skipped generating the .zsync file even though UPDATE_INFORMATION was
+  already set in 1.0.2 — update-aware tools had nothing to delta-update
+  against. zsync is now installed alongside the other build dependencies.
+
 ## 1.0.0 — Initial release
 
 - Browse stable Ubuntu mainline kernel versions from kernel.ubuntu.com,

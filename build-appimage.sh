@@ -17,7 +17,7 @@ if ! command -v cargo >/dev/null 2>&1 || ! pkg-config --exists gtk4 2>/dev/null;
     echo "==> Installing build dependencies"
     apt-get update -qq
     apt-get install -y -qq cargo rustc libgtk-4-dev libadwaita-1-dev \
-        pkg-config libssl-dev wget file desktop-file-utils
+        pkg-config libssl-dev wget file desktop-file-utils zsync
 fi
 
 # ── Release build ─────────────────────────────────────────────────────
