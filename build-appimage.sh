@@ -91,7 +91,7 @@ fi
 
 echo "==> Packing AppImage"
 OUT="$APP-$VERSION-$ARCH.AppImage"
-ARCH=$ARCH "$TOOL" --appimage-extract-and-run "$APPDIR" "$OUT"
+VERSION="$VERSION" ARCH="$ARCH" "$TOOL" --appimage-extract-and-run "$APPDIR" "$OUT"
 
 echo "==> Done: $OUT"
 ls -lh "$OUT"

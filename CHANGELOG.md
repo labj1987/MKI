@@ -24,3 +24,11 @@
   updated); the running kernel is never removable.
 - AppImage-only distribution. First launch installs the privileged
   script and polkit policy to system paths via pkexec.
+
+## 1.0.1 — Fix AppImage version metadata
+
+- build-appimage.sh computed VERSION from Cargo.toml but never exported
+  it to appimagetool, which fell back to a git commit hash. Package
+  managers like Gear Lever showed "Mainline Kernel Installer (05706c)"
+  instead of a real version. VERSION is now passed into appimagetool's
+  environment alongside ARCH.
