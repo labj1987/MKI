@@ -13,6 +13,11 @@ APPDIR="$BUILD_DIR/AppDir"
 echo "==> Building $APP $VERSION AppImage"
 
 # ── Build dependencies ────────────────────────────────────────────────
+# zsync is installed unconditionally: the guard below evaluates false in CI
+# (a prior workflow step already installs cargo), so the guarded block —
+# and zsync along with it — was being silently skipped.
+apt-get install -y -qq zsync
+
 if ! command -v cargo >/dev/null 2>&1 || ! pkg-config --exists gtk4 2>/dev/null; then
     echo "==> Installing build dependencies"
     apt-get update -qq

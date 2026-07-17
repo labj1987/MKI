@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.0.4 — Fix zsync still not installing in CI
+
+- 1.0.3 added zsync to the build-dependencies apt-get install line, but
+  that whole block is gated behind a check for whether cargo is already
+  on PATH. In CI, a prior "Set up Rust Toolchain" step already installs
+  cargo, so the guard evaluated false and the entire block — zsync
+  included — was silently skipped, same as before 1.0.3. zsync is now
+  installed unconditionally, ahead of the guarded block.
+
 ## 1.0.3 — Fix missing .zsync file
 
 - The build runner never had zsync installed, so appimagetool silently
