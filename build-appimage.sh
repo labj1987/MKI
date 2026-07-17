@@ -97,13 +97,18 @@ fi
 echo "==> Packing AppImage"
 OUT="$APP-$VERSION-$ARCH.AppImage"
 
-echo "==> zsync check:"
-dpkg -l zsync 2>&1 || echo "zsync package not installed"
-which zsyncmake 2>&1 || echo "zsyncmake not found in PATH"
-zsyncmake --version 2>&1 || echo "zsyncmake failed to run"
-
 UPDATE_INFORMATION="gh-releases-zsync|labj1987|MKI|latest|mainline-kernel-installer-*-x86_64.AppImage" \
 VERSION="$VERSION" ARCH="$ARCH" "$TOOL" --appimage-extract-and-run "$APPDIR" "$OUT"
 
 echo "==> Done: $OUT"
 ls -lh "$OUT"
+
+# appimagetool's built-in zsync generation silently no-ops on this runner,
+# so build the .zsync sidecar directly. Non-fatal: the AppImage itself is
+# already valid without it.
+echo "==> Generating .zsync sidecar"
+if zsyncmake "$OUT"; then
+    echo "==> .zsync generated: $OUT.zsync"
+else
+    echo "==> WARNING: zsyncmake failed — continuing without .zsync"
+fi

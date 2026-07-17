@@ -1,5 +1,21 @@
 # Changelog
 
+## 1.0.6 — Generate .zsync directly with zsyncmake
+
+- The 1.0.5 diagnostics showed zsync is installed and zsyncmake is on
+  PATH and works — but appimagetool's own built-in zsync generation was
+  still silently producing no .zsync file, with no warning either way.
+  This appimagetool build (continuous, git 8c8c91f) most likely probes
+  zsyncmake with a long-option flag (e.g. --version) to check it's
+  usable before generating the sidecar; the installed zsyncmake build
+  only understands old-style short options, so that probe fails and
+  appimagetool quietly skips zsync generation instead of erroring.
+  Rather than depend on appimagetool's internal detection, the .zsync
+  is now built directly with a standalone `zsyncmake "$OUT"` call right
+  after the AppImage is packed. This step is non-fatal: if it fails for
+  any reason, the build still succeeds since the AppImage itself is
+  already valid without it.
+
 ## 1.0.5 — Diagnostic-only release
 
 - 1.0.4 made zsync's install unconditional, but the release still isn't
