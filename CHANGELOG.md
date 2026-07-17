@@ -32,3 +32,10 @@
   managers like Gear Lever showed "Mainline Kernel Installer (05706c)"
   instead of a real version. VERSION is now passed into appimagetool's
   environment alongside ARCH.
+
+## 1.0.2 — Enable update checking
+
+- Embedded UPDATE_INFORMATION in the AppImage so update-aware tools
+  (Gear Lever, AppImageUpdate) can check GitHub Releases for newer
+  versions and delta-update via zsync. CI now also uploads the .zsync
+  file alongside the AppImage.
