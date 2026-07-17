@@ -96,6 +96,12 @@ fi
 
 echo "==> Packing AppImage"
 OUT="$APP-$VERSION-$ARCH.AppImage"
+
+echo "==> zsync check:"
+dpkg -l zsync 2>&1 || echo "zsync package not installed"
+which zsyncmake 2>&1 || echo "zsyncmake not found in PATH"
+zsyncmake --version 2>&1 || echo "zsyncmake failed to run"
+
 UPDATE_INFORMATION="gh-releases-zsync|labj1987|MKI|latest|mainline-kernel-installer-*-x86_64.AppImage" \
 VERSION="$VERSION" ARCH="$ARCH" "$TOOL" --appimage-extract-and-run "$APPDIR" "$OUT"
 

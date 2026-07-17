@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.0.5 — Diagnostic-only release
+
+- 1.0.4 made zsync's install unconditional, but the release still isn't
+  producing a .zsync file. Added explicit diagnostic output right before
+  the appimagetool invocation — dpkg status for the zsync package,
+  `which zsyncmake`, and `zsyncmake --version` — to pin down definitively
+  whether zsync is installed, whether zsyncmake is on PATH, and whether
+  it actually runs on the CI runner. No functional change otherwise.
+
 ## 1.0.4 — Fix zsync still not installing in CI
 
 - 1.0.3 added zsync to the build-dependencies apt-get install line, but
